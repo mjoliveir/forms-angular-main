@@ -21,5 +21,6 @@ export class MaiorIdadeDirective implements Validator{
     const idadeUsuario = anoAtual - ano;
     const maioridade : boolean = (anoAtual - ano) >= 18
     return maioridade? null : {'maiorIdadeValidator': true}
+    //após isso é só injetar essa diretiva personalizada como um parâmetro no input de data de nascimento
   }
 }

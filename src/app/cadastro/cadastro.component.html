@@ -37,7 +37,7 @@
             <!-- obrigatoriedade nascimento -->
             <app-mensagem *ngIf="nascimento?.errors?.['required']" mensagem="O campo de nascimento deve ser preenchido"></app-mensagem>
             <!-- obrigatoriedade de maioridade -->
-             <app-mensagem *ngIf="nascimento?.errors?.['maiorIdadeValidator']" mensagem=""> </app-mensagem>
+             <app-mensagem *ngIf="nascimento?.errors?.['maiorIdadeValidator']" mensagem="O usuário precisa ser maior de idade"></app-mensagem>
           </div>
       </div>
 
