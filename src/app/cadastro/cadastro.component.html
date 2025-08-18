@@ -98,30 +98,75 @@
         <app-mensagem *ngIf="cep?.errors?.['pattern']" mensagem="CEP não encontrado, por favor verifique" ></app-mensagem>
       </div>
     </div>
+    <!-- campo de endereço -->
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="endereco">Endereço</label>
-      <input name="endereco" id="endereco" class="campo__escrita" />
+      <input name="endereco" id="endereco" class="campo__escrita" 
+      ngModel 
+      required
+      #endereco = "ngModel"
+      minlength="5"
+      />
+      <!-- obrigatoriedade de inserção -->
+      <div *ngIf="(endereco?.touched && endereco?.invalid) || endereco?.dirty">
+        <app-mensagem *ngIf="endereco?.errors?.['required']" mensagem="O campo de endereço não pode ficar vazio, por favor informe seu endereço"></app-mensagem>
+        <app-mensagem *ngIf="endereco?.errors?.['minlength']" mensagem="O endereco informado é invalido, por favor verifique o endereço"></app-mensagem>
+      </div>
     </div>
+    <!-- campo de endereço (numero) -->
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="numero">Numero</label>
-        <input name="numero" id="numero" class="campo__escrita" />
+        <input name="numero" id="numero" class="campo__escrita" 
+        ngModel
+        #numero = 'ngModel'
+        required
+        pattern=""
+        maxlength="6"
+        />
+        <div *ngIf="(numero?.invalid && numero?.touched) || numero?.dirty">
+          <app-mensagem *ngIf="numero?.errors?.['required']" mensagem="O campo de numero não pode estar vazio, por favor insira seu numero"></app-mensagem>
+        </div>
       </div>
+    <!-- campo de endereço (complemento)-->
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="complemento">Complemento</label>
-        <input name="complemento" id="complemento" class="campo__escrita" />
+        <input name="complemento" id="complemento" class="campo__escrita" 
+        ngModel
+        required
+        #complemento = 'ngModel'
+        />
+        <div *ngIf="(complemento?.invalid && complemento?.touched) || complemento?.dirty">
+          <app-mensagem *ngIf="complemento?.errors?.['required']" mensagem="O campo de complemento não pode ficar vazio, por favor informe seu complemento"></app-mensagem>
+      </div>
       </div>
     </div>
+    <!-- campo de endereço bairro-->
     <div class="formulario__campo">
       <label class="campo__etiqueta" for="bairro">Bairro</label>
-      <input name="bairro" id="bairro" class="campo__escrita" />
+      <input name="bairro" id="bairro" class="campo__escrita" 
+      ngModel
+      required
+      #bairro = 'ngModel'
+      />
+      <div *ngIf="(bairro?.invalid && bairro?.touched) || bairro?.dirty">
+        <app-mensagem *ngIf="bairro?.errors?.['required']" mensagem="O campo de bairro não pode ficar vazio, por favor informe seu bairro"></app-mensagem>
+      </div>
     </div>
+    <!-- campo de endereço (cidade)-->
     <div class="formulario__dupla">
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="cidade">Cidade</label>
-        <input name="cidade" id="cidade" class="campo__escrita" />
+        <input name="cidade" id="cidade" class="campo__escrita" 
+        ngModel
+        required
+        #cidade = 'ngModel'
+        />
+        <div *ngIf="(cidade?.invalid && cidade?.touched) || cidade?.dirty">
+          <app-mensagem *ngIf="cidade?.errors?.['required']" mensagem="O campo de cidade não pode ficar vazio, por favor informe sua cidade"></app-mensagem>
       </div>
-
+      </div>
+    <!-- campo de endereço (seleção de estados) -->
       <div class="formulario__campo">
         <label class="campo__etiqueta" for="estado">UF</label>
         <select id="estado" name="estado" class="campo__escrita">
