@@ -87,15 +87,17 @@
       required 
       #cep="ngModel"
       pattern="^(\d{5})(-?\d{3})$"
-      minlength="8"
+      minlength="9"
       maxlength="9"
-      (blur)="consultaCep($event)"
+      (blur)="consultaCep($event, f)"
+      validadorCep
       />
       <!-- obrigatoriedade de inserção -->
       <div *ngIf="(cep?.touched && cep?.invalid) || cep?.dirty">
         <app-mensagem *ngIf="cep?.errors?.['required']" mensagem="O campo de cep é obrigatório"></app-mensagem>
         <!-- obrigatoriedade do regex pattern -->
         <app-mensagem *ngIf="cep?.errors?.['pattern']" mensagem="CEP não encontrado, por favor verifique" ></app-mensagem>
+        <app-mensagem *ngIf="cep?.errors?.['validadorCep']" mensagem="CEP não encontrado, por favor verifique"></app-mensagem>
       </div>
     </div>
     <!-- campo de endereço -->
